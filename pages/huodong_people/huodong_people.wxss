@@ -1,0 +1,30 @@
+/* pages/huodong_people/huodong_people.wxss */
+page{
+    padding-bottom: 100rpx;
+}
+.topbox{
+    font-size: 32rpx;
+    color: #666;
+    text-align: center;
+    padding: 40rpx 0;
+}
+.userbox{
+    padding: 0 25rpx;
+}
+.userbox .user{
+    float: left;
+    width: 10%;
+    margin-bottom: 10rpx;
+}
+.userbox .user .headimg{
+    display: block;
+    margin: 0 auto;
+    width: 60rpx;
+    height: 60rpx;
+}
+.getmore{
+    font-size: 28rpx;
+    color: #006699;
+    text-align: center;
+    padding: 40rpx 0;
+}

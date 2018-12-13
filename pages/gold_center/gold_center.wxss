@@ -1,0 +1,225 @@
+/* pages/gold_center/gold_center.wxss */
+page{
+    font-size: 28rpx;
+}
+.topbox{
+    border-bottom: 20rpx solid #f3f3f3;
+}
+.my-gold{
+    position: relative;
+    width: 100%;
+    height: 350rpx;
+}
+.my-gold .bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.my-gold .bubble{
+    position: absolute;
+    width: 140rpx;
+    text-align: center;
+    font-size: 24rpx;
+}
+.my-gold .b1{
+    top: 0;
+    left: 140rpx;
+}
+.my-gold .b2{
+    top: 140rpx;
+    left: 80rpx;
+}
+.my-gold .b3{
+    top: 20rpx;
+    right: 60rpx;
+}
+.my-gold .b4{
+    top: 160rpx;
+    right: 120rpx;
+}
+.my-gold .bubble .imgbox{
+    position: relative;
+    width: 70rpx;
+    height: 70rpx;
+    margin: 0 auto;
+    line-height: 70rpx;
+    text-align: center;
+    color: #fff;
+}
+.my-gold .b3 .imgbox{
+    width: 90rpx;
+    height: 90rpx;
+    line-height: 90rpx;
+}
+.my-gold .bubble .imgbox image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 70rpx;
+    height: 70rpx;
+    z-index: -1;
+}
+.my-gold .b3 .imgbox image{
+    width: 90rpx;
+    height: 90rpx;
+}
+.my-gold text{
+    color: #fff;
+}
+.my-gold .explain{
+    position: absolute;
+    left: 20rpx;
+    top: 20rpx;
+}
+.my-gold .explain image{
+    width: 40rpx;
+    height: 40rpx;
+}
+.my-gold .total{
+    width: 160rpx;
+    margin: 0 auto;
+    padding-top: 40rpx;
+}
+.my-gold .total .imgbox{
+    position: relative;
+    width: 160rpx;
+    height: 160rpx;
+    text-align: center;
+    line-height: 160rpx;
+    overflow: hidden;
+    border-radius: 50%;
+    background: #fff;
+    color: #ff6633;
+    font-size: 32rpx;
+}
+.my-gold .total .imgbox image{
+    position: absolute;
+    top: 130rpx;
+    left: -100rpx;
+    width: 337rpx;
+    height: 116rpx;
+}
+.my-gold .total text{
+    display: block;
+    padding-top: 10rpx;
+    color: #fff;
+    text-align: center;
+}
+.invite .btn{
+    width: 320rpx;
+    height: 60rpx;
+    margin: 40rpx auto;
+    line-height: 60rpx;
+    text-align: center;
+    background: #ff9933;
+    border-radius: 60rpx;
+    color: #fff;
+}
+.invite .friends{
+    width: 460rpx;
+    margin: 0 auto;
+    text-align: center;
+}
+.invite .friends image{
+    display: inline-block;
+    width: 72rpx;
+    height: 72rpx;
+    margin: 5rpx 10rpx;
+    border-radius: 50%;
+}
+.invite .tips{
+    padding: 20rpx 0;
+}
+.invite .tips text{
+    display: block;
+    text-align: center;
+    font-size: 24rpx;
+    color: #999;
+}
+.main{
+    padding: 20rpx;
+}
+.main .title text{
+    font-size: 24rpx;
+    color: #999;
+}
+.main .exchange .list{
+    padding: 20rpx 0;
+    overflow: hidden;
+}
+.main .exchange .list .block{
+    float: left;
+}
+.exchange .block .hongbao{
+    position: relative;
+    width: 177rpx;
+    height: 226rpx;
+    text-align: center;
+    padding-top: 106rpx;
+    box-sizing: border-box;
+}
+.exchange .block .hongbao text{
+    display: block;
+    color: #ffffcc;
+    font-size: 24rpx;
+}
+.exchange .block .hongbao image{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.exchange .block .remainder{
+    display: block;
+    margin-top: -20rpx;
+    font-size: 24rpx;
+    color: #999;
+    text-align: center;
+}
+.money .box{
+    position: relative;
+    width: 690rpx;
+    height: 273rpx;
+    margin: 0 auto;
+    margin-top: 30rpx;
+    padding: 60rpx;
+    box-sizing: border-box;
+}
+.money .box .bg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+.money .box text{
+    display: block;
+    color: #fff;
+}
+.money .box .yue{
+    font-size: 40rpx;
+}
+.money .box .tips{
+    font-size: 24rpx;
+    margin-top: 60rpx;
+}
+.money .box .tixian{
+    position: absolute;
+    right: 0;
+    top: 160rpx;
+    height: 60rpx;
+    width: 150rpx;
+    line-height: 60rpx;
+    background: #fff;
+    text-align: center;
+    color: #ef5056;
+    border-top-left-radius: 60rpx;
+    border-bottom-left-radius: 60rpx;
+    font-size: 24rpx;
+}

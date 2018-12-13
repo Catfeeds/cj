@@ -1,0 +1,6 @@
+<!--pages/share/share.wxml-->
+<view class='container'>
+    <canvas canvas-id="mycanvas" style='width:750rpx;height:1500rpx;'></canvas>
+    
+    <view class='savebtn'>保存图片到相册</view>
+</view>

@@ -1,0 +1,8 @@
+<!--pages/huodong_people/huodong_people.wxml-->
+<view>
+    <view class='topbox'>{{total}} 位参与者</view>
+    <view class='userbox clear-both'>
+        <view class='user' wx:for="{{users}}" wx:key="user_id"><image class='headimg' src='{{item.avatarurl}}'></image></view>
+    </view>
+    <view hidden='{{!hasNext}}' class='getmore' bindtap='getOneHuodongPeoples'>加载更多</view>
+</view>

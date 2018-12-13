@@ -1,0 +1,30 @@
+{
+    "pages": [
+        "pages/choujiang_xiangqing/choujiang_xiangqing",
+        "pages/index/index",
+        "pages/gold_center/gold_center",
+        "pages/my/my",
+        "pages/huodong_people/huodong_people",
+        
+        "pages/my_fabu/myfabu",
+        "pages/my_choujiang/my_choujiang",
+        "pages/my_zhongjiang/my_zhongjiang",
+        "pages/choujiang_fabu/choujiang_fabu",
+        "pages/share/share",
+        "pages/logs/logs",
+        "pages/rich_text/rich_text"
+    ],
+    "window": {},
+    "tabBar": {
+        "borderStyle": "white",
+        "backgroundColor": "#fff",
+        "list": [
+            {
+                "pagePath": "pages/index/index"
+            },
+            {
+                "pagePath": "pages/my/my"
+            }
+        ]
+    }
+}

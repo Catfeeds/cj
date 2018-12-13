@@ -1,0 +1,156 @@
+/**index.wxss**/
+
+page {
+    background: #f3f3f3;
+}
+
+.container {
+    padding: 40rpx 20rpx 20rpx;
+}
+
+.top-red-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 220rpx;
+    width: 100%;
+    background: #ef5056;
+    z-index: -1;
+}
+
+.block {
+    margin-bottom: 20rpx;
+    padding: 30rpx 20rpx;
+    border-radius: 10rpx;
+    background: #fff;
+}
+.qianbao{
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.line{
+    height: 1rpx;
+    width: 100%;
+    background: #eee;
+}
+.jinbi{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.block::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.block .icon {
+    float: left;
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.block .text {
+    float: left;
+    margin-left: 20rpx;
+    font-size: 32rpx;
+    line-height: 50rpx;
+    color: #666;
+}
+
+.block .jump {
+    float: right;
+    height: 50rpx;
+    display: flex;
+    align-items: center;
+    font-size: 32rpx;
+}
+
+.jinbi .jump,
+.qianbao .jump {
+    font-size: 36rpx;
+    color: #ffcc33;
+    font-weight: 600;
+}
+
+.block .jump image {
+    width: 28rpx;
+    height: 28rpx;
+    margin-left: 20rpx;
+}
+.other {
+    padding: 0 20rpx;
+}
+.other > view {
+    padding: 30rpx 0;
+    border-top: 1px solid #eee;
+}
+
+.other > view:first-child{
+    border-top: none;
+}
+
+.userinfo {
+    padding: 0 20rpx 40rpx;
+}
+
+.userinfo .box {
+    padding-top: 40rpx;
+}
+
+.userinfo .box::after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+.userinfo .box .headimg {
+    float: left;
+    width: 100rpx;
+    height: 100rpx;
+    border-radius: 50%;
+}
+
+.userinfo .box .nickname {
+    float: left;
+    width: 370rpx;
+    margin-left: 20rpx;
+    font-size: 32rpx;
+    color: #666;
+    line-height: 100rpx;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.userinfo .box .address {
+    float: right;
+    height: 100rpx;
+    display: flex;
+    align-items: center;
+    font-size: 28rpx;
+    color: #999;
+}
+
+.userinfo .box .address image {
+    height: 28rpx;
+    width: 28rpx;
+    margin-left: 10rpx;
+}
+
+.userinfo .box .item {
+    float: left;
+    width: 33.3%;
+    font-size: 28rpx;
+    color: #666;
+}
+
+.userinfo .box .item text {
+    display: block;
+    width: 100%;
+    text-align: center;
+    line-height: 60rpx;
+}
+.userinfo .box .item .num{
+    font-size: 32rpx;
+}

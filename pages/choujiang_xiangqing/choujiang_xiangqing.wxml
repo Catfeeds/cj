@@ -1,0 +1,90 @@
+<!--pages/choujiang_xiangqing/choujiang_xiangqing.wxml-->
+<view class="container">
+    <button wx:if="{{!userInfo_flag}}" style='position:fixed;' class='authorize' open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo"></button>
+    <canvas canvas-id="shareCanvas" wx:if="{{canvas_flag}}"></canvas> 
+    <view class='topbox'>
+        <swiper autoplay style='height:500rpx;' interval="3000" indicator-dots="{{jiangpins.length>1}}">
+            <block wx:for="{{jiangpins}}" wx:key="index">
+                <swiper-item>
+                    <view class='banner'>
+                        <image src='{{img_domain+item.img+"!banner"}}'></image>
+                        <text wx:if="{{desc.zanzu_flag == 1}}" class='zanzhu'>{{desc.zanzu}}</text>
+                    </view>
+                    <view class='title'>
+                        <text class='title-txt'>奖品：{{item.jiangpin_text}}<text style='color:#ef5056;'> X {{item.jiangpin_num}}</text></text>
+                        <view class='danbao' wx:if="{{desc.is_danbao == 1}}">
+                            <image src='../../images/my/danbao.png'></image>
+                            <text>已担保</text>
+                        </view>
+                    </view>
+                    <view class='condition'>
+                        <!-- <text>奖品类型：{{jiangpin_type_arry[item.jiangpin_type]}}</text> -->
+                        <text>奖品价值：{{item.jiangpin_money/100}}元/份</text>
+                    </view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+    <view class='faqiren'>
+        <text>抽奖发起人</text>
+        <view>
+            <image src="{{send_user.avatarurl}}"></image>
+            <text>{{send_user.nickname}}</text>
+        </view>
+    </view>
+    <view class='guanggao'>{{info.choujiang_shuoming}}</view>
+    <view class='mainbox'>
+        <view class='jianjie'>
+            <text>{{info.content}}</text>
+            <image wx:for="{{content_imgs}}" wx:key="index" src='{{img_domain+item}}' mode='widthFix'></image>
+        </view>
+        <view class='info' style='margin-top:40rpx;'>开奖条件：<text>{{desc.kaijiang_tiaojian}}</text></view>
+        <view class='info mycodes clear-both' wx:if='{{codes_info.codes.length > 0}}'>
+            <text style='color: #333;'>我的抽奖码：</text>
+            <text wx:for="{{codes_info.codes}}" wx:key="index" class='code-item'>{{item.code}}</text>
+        </view>
+        <view>
+            <view class='canyu-btn'>
+                <image src='../../images/my/circle.png'></image>
+                <!-- <text>参与抽奖</text> -->
+                <form report-submit bindsubmit="choujiang">
+                    <button form-type="submit">参与抽奖</button>
+                </form>
+            </view>
+            <view class='canyu-tips'><text>{{canyu_tips}}</text><text>{{canyu_tips2}}</text></view>
+        </view>
+        <view class='friends'>
+            <image wx:for="{{codes_info.invite_users}}" wx:key="index" src='{{item.avatarurl}}'></image>
+            <image wx:for="{{uninvite_users}}" wx:key="index" src='{{item}}'></image>
+        </view>
+        <view class='canyu-text'><text>已邀请好友 <text style='color:#f74a5e;'>{{codes_info.invite_users.length}}</text>/3</text></view>
+        <view class='canyu-info'>
+            <text>已有 {{desc.now_num}} 人参与</text>
+            <view class='lianjie' bindtap='jumpToHuodongPepple'>
+                <text>查看全部</text>
+                <!-- <image src='../../images/my/lianjie.png'></image>  -->
+            </view>
+        </view>
+        <view class='canyu-users'>
+            <view wx:for="{{users}}" wx:key="user_id" class='headimg'><image src='{{item.avatarurl}}'></image></view>
+        </view>
+    </view>
+    
+    <!-- <view class='jubao'><text>举报该抽奖</text></view> -->
+    <view class='bottombox'>
+        <view class='share' bindtap='listenerShareButton'><text>分享给好友</text></view>
+        <view class='getmore' bindtap='jumpToFabuPage'><text>我也要发起抽奖</text></view>
+    </view>
+    <view class='bg' bindtap='listenerCancleButton' hidden='{{bg_hidden_flag}}'></view>
+    <view class='action-sheet' style='transform:translateY({{actionSheet_posy}});opacity:{{actionSheet_opa}};'>
+        <view class='action-sheet-item'>
+            <button hover-class="none" open-type="share">分享给好友</button>
+        </view>
+        <view class='action-sheet-item' bindtap="generatePoster">
+            生成分享海报
+        </view>
+        <view bindtap='listenerCancleButton' class='action-sheet-cancle'>
+            取消
+        </view>
+    </view>
+</view>

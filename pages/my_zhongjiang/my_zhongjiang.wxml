@@ -1,0 +1,26 @@
+<!--pages/my_zhongjiang/my_zhongjiang.wxml-->
+<view>
+    <view>
+        <view wx:for="{{huodongs}}" wx:key="index" class='block' data-id="{{item.huodong_id}}" data-url='../choujiang_xiangqing/choujiang_xiangqing' bindtap='jumpToPage'>
+            <view class='banner'>
+                <image src='{{img_domain+huodongs_info[item.huodong_id].img}}'></image>
+                <text wx:if="{{huodongs_info[item.huodong_id].zanzu_flag == 1}}" class='zanzhu'>{{huodongs_info[item.huodong_id].zanzu}}</text>
+            </view>
+            <view class='title'>
+                <text class='title-txt'>{{huodongs_info[item.huodong_id].title}}</text>
+                <view class='danbao' wx:if="{{huodongs_info[item.huodong_id].is_danbao == 1}}">
+                    <image src='../../images/my/danbao.png'></image>
+                    <text>已担保</text>
+                </view>
+            </view>
+            <view class='condition'>
+                <text wx:if="{{huodongs_info[item.huodong_id].state==11}}">{{huodongs_info[item.huodong_id].kaijiang_tiaojian}}</text>
+                <text wx:else></text>
+                <text wx:if="{{huodongs_info[item.huodong_id].state==12 && item.kaijiang_flag==0}}" class='state'>已开奖，待查看</text>
+                <text wx:elif="{{huodongs_info[item.huodong_id].state==12 && item.kaijiang_flag==1}}" class='state'>已开奖</text>
+                <text wx:elif="{{huodongs_info[item.huodong_id].state==15}}" class='state'>开奖失败</text>
+            </view>
+        </view>
+    </view>
+    <view hidden='{{nomore_flag}}' class='nomore'>暂无数据</view>
+</view>

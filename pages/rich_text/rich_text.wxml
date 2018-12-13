@@ -1,0 +1,4 @@
+<!--pages/rich_text/rich_text.wxml-->
+<view>
+    <textarea bindinput="contentInput" placeholder="请输入活动介绍" maxlength='-1' value='{{content}}' />
+</view>

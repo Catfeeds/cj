@@ -1,0 +1,70 @@
+<!--index.wxml-->
+<view class="container">
+    <view class='top-red-bg'></view>
+    <view class='userinfo block'>
+        <view class='box'>
+            <image class='headimg' src='{{user_info.avatarurl}}'></image>
+            <text class='nickname'>{{user_info.nickname}}</text>
+            <view class='address'>
+                <text>收货地址</text>
+                <image src='../../images/my/right.png'></image>
+            </view>
+        </view>
+        <view class='box'>
+            <view class='item' data-url='../my_fabu/myfabu' bindtap='jumpToPage'>
+                <text class='col-green num'>{{huodong_data.fabu}}</text>
+                <text>已发布抽奖</text>
+            </view>
+            <view class='item' data-url='../my_choujiang/my_choujiang' bindtap='jumpToPage'>
+                <text class='col-red num'>{{huodong_data.canyu}}</text>
+                <text>参与抽奖</text>
+            </view>
+            <view class='item' data-url='../my_zhongjiang/my_zhongjiang' bindtap='jumpToPage'>
+                <text class='col-red num'>{{huodong_data.zhongjianng}}</text>
+                <text>获奖记录</text>
+            </view>
+        </view>
+    </view>
+    <view class='qianbao block' data-url='../gold_center/gold_center' bindtap='jumpToPage'>
+        <image class='icon' src='../../images/my/wallet.png'></image>
+        <text class='text'>我的钱包</text>
+        <view class='jump'>
+            <text>{{user_info.money}}</text>
+            <image src='../../images/my/right.png'></image>
+        </view>
+    </view>
+    <view style='background:#fff;padding:0 20rpx;'><view class='line'></view></view>
+    <view class='jinbi block' data-url='../gold_center/gold_center' bindtap='jumpToPage'>
+        <image class='icon' src='../../images/my/jinbi.png'></image>
+        <text class='text'>金币中心</text>
+        <view class='jump'>
+            <text>{{user_info.coin}}</text>
+            <image src='../../images/my/right.png'></image>
+        </view>
+    </view>
+    <view class='other block'>
+        <view class='renzheng clear-both'>
+            <image class='icon' src='../../images/my/renzheng.png'></image>
+            <text class='text'>信息认证</text>
+            <view class='jump'>
+                <image src='../../images/my/right.png'></image>
+            </view>
+        </view>
+        <view class='lianxi clear-both'>
+            <image class='icon' src='../../images/my/lianxi.png'></image>
+            <text class='text'>联系我们</text>
+            <view class='jump'>
+                <image src='../../images/my/right.png'></image>
+            </view>
+        </view>
+        <view class='problem clear-both'>
+            <image class='icon' src='../../images/my/problem.png'></image>
+            <text class='text'>常见问题</text>
+            <view class='jump'>
+                <image src='../../images/my/right.png'></image>
+            </view>
+        </view>
+    </view>
+    <import src="../common/tabbar.wxml"/>
+    <template is="tabbar" data="{{...tabbar_data}}"/>
+</view>

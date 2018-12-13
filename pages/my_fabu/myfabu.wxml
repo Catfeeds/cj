@@ -1,0 +1,30 @@
+<!--pages/my_fabu/myfabu.wxml-->
+<view>
+    <view>
+        <view wx:for="{{huodongs}}" wx:key="index" class='block' data-id="{{item.huodong_id}}" data-url='../choujiang_xiangqing/choujiang_xiangqing' bindtap='jumpToPage'>
+            <view class='banner'>
+                <image src='{{img_domain+item.img}}'></image>
+                <text wx:if="{{item.zanzu_flag == 1}}" class='zanzhu'>{{item.zanzu}}</text>
+            </view>
+            <view class='title'>
+                <text class='title-txt'>{{item.title}}</text>
+                <view class='danbao' wx:if="{{item.is_danbao == 1}}">
+                    <image src='../../images/my/danbao.png'></image>
+                    <text>已担保</text>
+                </view>
+            </view>
+            <view class='condition'>
+                <!-- <text>{{huodongs_info[item.huodong_id].kaijiang_tiaojian}}</text> -->
+                <text></text>
+                <text wx:if="{{item.state==0}}" class='state'>异常状态</text>
+                <text wx:elif="{{item.state==11}}" class='state'>正常显示，未开奖</text>
+                <text wx:elif="{{item.state==12}}" class='state'>正常显示，已开奖</text>
+                <text wx:elif="{{item.state==13}}" class='state'>开奖中</text>
+                <text wx:elif="{{item.state==14}}" class='state'>待支付担保金或活动现金</text>
+                <text wx:elif="{{item.state==15}}" class='state'>活动没有人参与，开奖失败</text>
+            </view>
+        </view>
+    </view>
+    <view hidden='{{nomore_flag}}' class='nomore'>暂无数据</view>
+</view>
+

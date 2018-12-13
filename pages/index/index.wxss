@@ -1,0 +1,88 @@
+page{
+    background: #f3f3f3;
+}
+.bg{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 9999;
+    transition: all 0.5s linear;
+}
+.block{
+    margin-bottom: 30rpx;
+    background: #fff;
+}
+.banner{
+    position: relative;
+    margin-bottom: 10rpx;
+}
+.banner image{
+    width: 100%;
+    height: 350rpx;
+}
+.banner .zanzhu{
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx;
+    background: #000;
+    padding: 6rpx 20rpx;
+    border-radius: 4rpx;
+    font-size: 28rpx;
+    color: #fff;
+    opacity: .7;
+}
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-start;
+    padding: 0 20rpx;
+    font-size: 32rpx;
+    color: #333;
+}
+.title .title-txt{
+    line-height: 48rpx;
+}
+.title .danbao{
+    display: flex;
+    align-items: center;
+    padding-top: 6rpx;
+}
+.title .danbao image{
+    height: 26rpx;
+    width: 26rpx;
+}
+.title .danbao text{
+    white-space: nowrap;
+    padding-left: 4rpx;
+    font-size: 28rpx;
+    color: #ff6633;
+}
+.condition{
+    padding: 10rpx 20rpx 20rpx;
+    font-size: 26rpx;
+    color: #666;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.condition .canyu{
+    display: flex;
+    align-items: center;
+    height: 28rpx;
+    width: 120rpx;
+    margin-right: 10rpx;
+    font-size: 24rpx;
+    color: #23a348;
+    border-right: 4rpx solid #23a348;
+}
+.condition .canyu image{
+    width: 26rpx;
+    height: 26rpx;
+}
+.condition .canyu text{
+    padding-left: 10rpx;
+    font-weight: 600;
+}

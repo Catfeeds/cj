@@ -1,0 +1,7 @@
+<template name="topbar">
+    <view style='width:100%;height:130rpx;'></view>
+    <view class='topbar'>
+        <image bindtap='backHome' wx:if='{{home_icon_hidden}}' class='home-icon' src='../../images/my/home.png'></image>
+        <text>{{title_text}}</text>
+    </view>
+</template>

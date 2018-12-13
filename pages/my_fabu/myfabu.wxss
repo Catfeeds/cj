@@ -1,0 +1,69 @@
+/* pages/my_fabu/myfabu.wxss */
+page{
+    background: #f3f3f3;
+}
+.block{
+    margin-bottom: 30rpx;
+    background: #fff;
+}
+.banner{
+    position: relative;
+    margin-bottom: 10rpx;
+}
+.banner image{
+    width: 100%;
+    height: 350rpx;
+}
+.banner .zanzhu{
+    position: absolute;
+    top: 20rpx;
+    right: 20rpx;
+    background: #fff;
+    padding: 4rpx 20rpx;
+    border-radius: 6rpx;
+    font-size: 28rpx;
+    color: #ff6633;
+}
+.title{
+    display: flex;
+    justify-content: space-between;
+    align-items:flex-start;
+    padding: 0 20rpx;
+    font-size: 32rpx;
+    color: #333;
+}
+.title .title-txt{
+    line-height: 48rpx;
+}
+.title .danbao{
+    display: flex;
+    align-items: center;
+    padding-top: 6rpx;
+}
+.title .danbao image{
+    height: 26rpx;
+    width: 26rpx;
+}
+.title .danbao text{
+    white-space: nowrap;
+    padding-left: 4rpx;
+    font-size: 28rpx;
+    color: #ff6633;
+}
+.condition{
+    padding: 20rpx;
+    font-size: 28rpx;
+    color: #666;
+    display: flex;
+    justify-content: space-between;
+}
+.condition .state{
+    padding-left: 20rpx;
+    white-space: nowrap;
+}
+.nomore{
+    font-size: 28rpx;
+    color: #999;
+    text-align: center;
+    line-height: 100rpx;
+}

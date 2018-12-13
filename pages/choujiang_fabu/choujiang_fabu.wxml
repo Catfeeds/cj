@@ -1,0 +1,219 @@
+<!--pages/choujiang_fabu/choujiang_fabu.wxml-->
+<view>
+    <view class='bg' hidden='{{bg_flag}}' bindtap='hiddenBg'></view>
+    <canvas canvas-id="firstCanvas"></canvas>
+    <view class='crop-img' hidden='{{crop_flag}}'>
+        <view class='cropbox' bindtouchstart='getFirstPoint' bindtouchmove='moveImage'>
+            <view class='mask1'></view>
+            <!-- <view class='imgbox'> -->
+                <image style='transform:translate({{change_x}}px,{{change_y}}px);width:{{crop_img_width}}px;' src='{{crop_img}}' bindload='getImage' mode='widthFix'></image>
+                <view class='imgbox'></view>
+            <!-- </view> -->
+            <view class='mask2'></view>
+        </view>
+        <view class='cropbtn' bindtap='cropImage'>确认</view>
+    </view>
+    <view wx:if='{{crop_flag}}'>
+        <view class='price'>
+            <view class='block' wx:for='{{prices}}' wx:key="index">
+                <view class='upload-img'>
+                    <view hidden='{{item.img_local!=""}}'>
+                        <view class='img'><image src='../../images/my/img.png'></image></view>
+                    </view>
+                    <view hidden='{{item.img_local==""}}'>
+                        <view class='img'><image src='{{item.img_local}}'></image></view>
+                    </view>
+                    <view class='upload-btn'><text data-index='{{index}}' bindtap='chooseImg'>更换图片</text></view>
+                </view>
+                <view style='padding: 0 20rpx;'>
+                    <view class='price-name clear-both'>
+                        <text class='left-part'>奖品名称</text>
+                        <view class='right-part'>
+                            <input data-index="{{index}}" bindinput="jiangpinTextInput" placeholder="请输入奖品名称" value='{{item.jiangpin_text}}'/>
+                        </view>
+                    </view>
+                    <view class='price-num clear-both'>
+                        <text class='left-part'>奖品份数</text>
+                        <view class='right-part'>
+                            <input data-index="{{index}}" type='number' bindinput="jiangpinNumInput" placeholder="最小1，最大200" value='{{item.jiangpin_num}}'/>
+                            <text>份</text>
+                        </view>
+                    </view>
+                    <view class='price-type clear-both'>
+                        <text class='left-part'>奖品类型</text>
+                        <view class='right-part'>
+                            <picker data-index='{{index}}' bindchange="priceTypeChange" value="{{item.jiangpin_type-1}}" range="{{jiangpin_type_arry}}">
+                                <view class="picker">
+                                {{jiangpin_type_arry[item.jiangpin_type-1]}}
+                                </view>
+                            </picker>
+                        </view>
+                    </view>
+                    <view class='price-worth clear-both'>
+                        <text class='left-part'>奖品价值</text>
+                        <view class='right-part'>
+                            <input data-index="{{index}}" bindinput="jiangpinMoneyInput" type='number' placeholder="单份奖品价值最大20000" value='{{item.jiangpin_money}}'/>
+                            <text>元/份</text>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class='add-price' hidden='{{prices.length>=3}}'>
+                <text bindtap='addPrice'>+ 添加奖品</text>
+            </view>
+        </view>
+        <view class='settings'>
+            <!-- <view class='switch'>
+                <text>高级设置：</text>
+                <switch bindchange="switchChange" color='#ef5056' />
+            </view> -->
+            <view>
+                <view class='settings-box2'>
+                    <text class='title'>活动介绍：</text>
+                    <textarea bindinput="contentInput" placeholder="请输入活动介绍" maxlength='-1' value='{{content}}' />
+                    <view class='imgbox'>
+                        <image wx:for='{{content_imgs}}' wx:key='index' src='{{img_domain+item}}' mode="widthFix"></image>
+                        <image style='width:120rpx;height:120rpx;' hidden='{{content_imgs.length>=5}}' bindtap='addContentImg' src='../../images/my/img-1.png'></image>
+                    </view>
+                </view>
+                <view class='settings-box1'>
+                    <text class='title'>开奖说明：</text>
+                    <textarea bindinput="choujiangShuomingInput" placeholder="请输入开奖说明" maxlength='-1' value='{{choujiang_shuoming}}' />
+                </view>
+                <!-- <view class='qr_type'>
+                    <text>二维码类型：</text>
+                    <picker bindchange="qrTypeChange" value="{{qr_type-1}}" range="{{qr_type_arry}}">
+                        <view style='width:530rpx;display: flex;align-items: center;justify-content: space-between;'>
+                            <text style='color:#666;'>{{qr_type_arry[qr_type-1]}}</text>
+                            <image src='../../images/my/right.png'></image>
+                        </view>
+                    </picker>
+                </view>
+                <view class='qr_text'>
+                    <text class='title'>二维码文字：</text>
+                    <input bindinput="qrTextInput" placeholder="请输入二维码文字" value='{{qr_text}}'></input>
+                </view>
+                <view class='qr_img'>
+                    <text class='title'>二维码图片：</text>
+                    <image wx:if='{{qr_img == ""}}' bindtap='addQrImg' src='../../images/my/img-1.png'></image>
+                    <image wx:else src='{{img_domain+qr_img}}'></image>
+                </view> -->
+            </view>
+        </view>
+        <view class='kouling-state'>
+            <view class='switch'>
+                <text>口令</text>
+                <switch bindchange="koulingChange" color='#ef5056' />
+            </view>
+            <view class='kouling' hidden='{{kouling_state == 0}}'>
+                <input bindinput="koulingInput" placeholder="请输入口令" value='{{kouling}}'></input>
+            </view>
+            <view class='kouling-tip' hidden='{{kouling_state == 0}}'>
+                <input bindinput="koulingTipInput" placeholder="请输入口令获取的提示文字" value='{{kouling_tip}}'></input>
+            </view>
+        </view>
+        <view class='danbao'>
+            <view class='switch'>
+                <view style='display:flex;align-items:center;'>
+                    <text>担保</text>
+                    <image bindtap='danbaoProblemShow' style='width:28rpx;height:28rpx;' src='../../images/my/explain-gray.png'></image>
+                </view>
+                <switch bindchange="danbaoChange" color='#ef5056' />
+            </view>
+            <view class='problembox' bindtap='hiddenBg' hidden='{{danbao_problem}}'>
+                如果中奖者未收到奖品或奖品质量有问题，按照担保规则补偿现金给中奖者。如果奖品发放无误，平台在中奖者确认收到货后，7个工作日内退款给抽奖发起者，14天未进行确认操作，则自动退回。
+            </view>
+            <!-- <view class='title'>
+                <text class='title-txt'>是否担保：</text>
+                <view class='problem'>
+                    <text bindtap='danbaoProblemShow'>为什么要担保</text>
+                    <image src='../../images/my/lianjie.png'></image>
+                    <view class='problembox' bindtap='hiddenBg' hidden='{{danbao_problem}}'>
+                        如果中奖者未收到奖品或奖品质量有问题，按照担保规则补偿现金给中奖者。如果奖品发放无误，平台在中奖者确认收到货后，7个工作日内退款给抽奖发起者，14天未进行确认操作，则自动退回。
+                    </view>
+                </view>
+            </view>
+            <view>
+                <radio-group class='radio-group clear-both' bindchange="danbaoChange">
+                    <label>
+                        <radio class='radio' checked='{{is_danbao=="0"}}' value="0" color='#ff6633'/>不担保
+                    </label>
+                    <label>
+                        <radio class='radio' checked='{{is_danbao=="2"}}' value="2" color='#ff6633'/>担保
+                    </label>
+                </radio-group>
+            </view> -->
+        </view>
+        <view class='xianshi'>
+            <view class='switch'>
+                <text>首页显示<text style='font-size:24rpx;color:#999;'>（需担保过的抽奖才能在首页显示）</text></text>
+                <switch disabled='{{is_danbao=="0"}}' checked="{{to_index_state=='3'}}" bindchange="xianshiChange" color='#ef5056' />
+            </view>
+            <!-- <view><text class='title'>是否首页显示：<text>（需担保过的抽奖才能在首页显示）</text></text></view>
+            <view>
+                <radio-group class='radio-group clear-both' bindchange="xianshiChange">
+                    <label>
+                        <radio class='radio' checked='{{to_index_state=="0"}}' value="0" color='#ff6633'/>不需要上首页
+                    </label>
+                    <label>
+                        <radio class='radio' checked='{{to_index_state=="3"}}' disabled='{{is_danbao=="0"}}' value="3" color='#ff6633'/>上首页待审核
+                    </label>
+                </radio-group>
+            </view> -->
+        </view>
+        <view class='tiaojian'>
+            <view class='title'>
+                <text class='title-txt'>开奖条件：<text>{{kaijiang_type_arry[kaijiang_type-1]}}</text></text>
+                <picker bindchange="tiaojianChange" value="{{kaijiang_type-1}}" range="{{kaijiang_type_arry}}">
+                    <view class='problem'>
+                        <text>修改条件</text>
+                        <image src='../../images/my/lianjie.png'></image>
+                    </view>
+                </picker>
+                    <!-- <text bindtap='editTioajian'>修改条件</text>
+                    <image src='../../images/my/lianjie.png'></image>
+                    <view class='tiaojian-box' hidden='{{tiaojian_flag}}'>
+                        <radio-group bindchange="tiaojianChange">
+                            <label>
+                                <radio checked='{{kaijiang_type=="1"}}' value="1" color='#ff6633'/>指定时间开奖
+                            </label>
+                            <label>
+                                <radio checked='{{kaijiang_type=="2"}}' value="2" color='#ff6633'/>指定人数开奖
+                            </label>
+                        </radio-group>
+                    </view> -->
+            </view>
+            <view class='tj-res' hidden='{{kaijiang_type!="1"}}'>
+                <!-- <picker mode="date" value="{{date}}" start="2018-12-07" end="2019-12-07" bindchange="bindDateChange">
+                    <view style='margin-top: 20rpx;display: flex;align-items: center;justify-content: center;'>
+                        <text style='color:#999;'>{{kaijiang_date}}</text>
+                    </view>
+                </picker>
+                <picker mode="time" value="24:00" start="00:00" end="24:00" bindchange="bindTimeChange">
+                    <view style='margin-top: 20rpx;display: flex;align-items: center;justify-content: center;'>
+                        <text style='color:#999;'>{{kaijiang_time}}</text>
+                    </view>
+                </picker> -->
+                <picker-view indicator-style="height: 30px;" style="width: 100%; height: 180px;" value="{{time_value}}" bindchange="timeChange">
+                    <picker-view-column>
+                        <view wx:for="{{days_show}}" wx:key="index" style="line-height: 30px">{{item}}</view>
+                    </picker-view-column>
+                    <picker-view-column>
+                        <view wx:for="{{hours}}" wx:key="index" style="line-height: 30px">{{item}}</view>
+                    </picker-view-column>
+                    <picker-view-column>
+                        <view wx:for="{{minutes}}" wx:key="index" style="line-height: 30px">{{item}}</view>
+                    </picker-view-column>
+                </picker-view>
+            </view>
+            <view class='tj-res' hidden='{{kaijiang_type!="2"}}'>
+                <view class='num' style='display:flex;align-item:center;justify-content:center;'>满<input bindinput="kaijiangNumInput" type='number' value='{{kaijiang_num}}'/>人开奖</view>
+            </view>
+        </view>
+        <form bindsubmit="faqiChoujiang" report-submit>
+            <cover-view class='faqi'>
+                <button class='faqi-btn' form-type="submit">立即发起抽奖</button>
+            </cover-view>
+        </form>
+    </view>
+</view>

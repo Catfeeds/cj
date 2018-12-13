@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="container">
+    <view class='bg' style='opacity:{{myopacity}};display:{{mydisplay}};'></view>
+    <view class='block' wx:for="{{huodongs}}" wx:key="huodong_id" data-id="{{item.huodong_id}}" data-url='../choujiang_xiangqing/choujiang_xiangqing' bindtap='jumpToPage'>
+        <view class='banner'>
+            <image src='{{img_domain+item.img+"!banner"}}'></image>
+            <text wx:if="{{item.zanzu_flag == 1}}" class='zanzhu'>{{item.zanzu}}</text>
+        </view>
+        <view class='title'>
+            <text class='title-txt'>{{item.title}}</text>
+            <view wx:if="{{item.is_danbao == 1}}" class='danbao'>
+                <image src='../../images/my/danbao.png'></image>
+                <text>已担保</text>
+            </view>
+        </view>
+        <view class='condition'>
+            <view class='canyu' wx:if="{{canyu[item.huodong_id]>=1}}">
+                <image src='../../images/my/canyu.png'></image>
+                <text>已参与</text>
+            </view>
+            <text>{{item.kaijiang_tiaojian}}</text>
+        </view>
+    </view>
+    <import src="../common/tabbar.wxml"/>
+    <template is="tabbar" data="{{...tabbar_data}}"/>
+</view>

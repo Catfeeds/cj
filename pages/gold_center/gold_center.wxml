@@ -1,0 +1,98 @@
+<!--pages/gold_center/gold_center.wxml-->
+<view>
+    <view class='topbox'>
+        <view class='my-gold'>
+            <image class='bg' src='../../images/my/gold-center-head.png'></image>
+            <view class='bubble b1'>
+                <view class='imgbox'><image src='../../images/my/bubble.png'></image>+50</view>
+                <text>添加小程序</text>
+            </view>
+            <view class='bubble b2'>
+                <view class='imgbox'><image src='../../images/my/bubble.png'></image>+50</view>
+                <text>关注公众号</text>
+            </view>
+            <view class='bubble b3'>
+                <view class='imgbox'><image src='../../images/my/bubble.png'></image>+300</view>
+                <text>任务中心</text>
+            </view>
+            <view class='bubble b4'>
+                <view class='imgbox'><image src='../../images/my/bubble.png'></image>+50</view>
+                <text>绑定手机号</text>
+            </view>
+            <view class='explain'>
+                <image src='../../images/my/explain.png'></image>
+            </view>
+            <view class='total'>
+                <view class='imgbox'><image src='../../images/my/wave.png'></image>3000</view>
+                <text>我的金币</text>
+            </view>
+        </view>
+        <view class='invite'>
+            <view class='btn'>邀请好友 ( 5/10 )</view>
+            <view class='friends'>
+                <image src='../../images/test.jpg'></image>
+                <image src='../../images/test.jpg'></image>
+                <image src='../../images/test.jpg'></image>
+                <image src='../../images/test.jpg'></image>
+                <image src='../../images/test.jpg'></image>
+                <image src='../../images/test.jpg'></image>
+                <image src='../../images/test.jpg'></image>
+                <image src='../../images/test.jpg'></image>
+                <image src='../../images/test.jpg'></image>
+                <image src='../../images/test.jpg'></image>
+            </view>
+            <view class='tips'>
+                <text>每成功邀请一位好友可获得5金币</text>
+                <text>每天最多可拿50金币</text>
+            </view>
+        </view>
+    </view>
+    <view class='main'>
+        <view class='exchange'>
+            <text class='title'>金币换现金<text>（每天早上10点限量放出）</text></text>
+            <view class='list'>
+                <view class='block'>
+                    <view class='hongbao'>
+                        <image src='../../images/my/hongbao.png'></image>
+                        <text>￥0.3</text>
+                        <text>50幸运币</text>
+                    </view>
+                    <text class='remainder'>剩余20000份</text>
+                </view>
+                <view class='block'>
+                    <view class='hongbao'>
+                        <image src='../../images/my/hongbao.png'></image>
+                        <text>￥0.3</text>
+                        <text>50幸运币</text>
+                    </view>
+                    <text class='remainder'>剩余20000份</text>
+                </view>
+                <view class='block'>
+                    <view class='hongbao'>
+                        <image src='../../images/my/hongbao.png'></image>
+                        <text>￥0.3</text>
+                        <text>50幸运币</text>
+                    </view>
+                    <text class='remainder'>剩余20000份</text>
+                </view>
+                <view class='block'>
+                    <view class='hongbao'>
+                        <image src='../../images/my/hongbao.png'></image>
+                        <text>￥0.3</text>
+                        <text>50幸运币</text>
+                    </view>
+                    <text class='remainder'>剩余20000份</text>
+                </view>
+            </view>
+        </view>
+        <view class='money'>
+            <text class='title'>我的零钱：</text>
+            <view class='box'>
+                <image class='bg' src='../../images/my/lingqian-bg.png'></image>
+                <text class='yue'>0.0元</text>
+                <text class='tips'>● 满2元后方可提现</text>
+                <view class='tixian'>零钱提现</view>
+            </view>
+        </view>
+    </view>
+</view>
