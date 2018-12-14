@@ -23,6 +23,8 @@ Page({
         content_imgs:[],
         jiangpins:[],
         send_user:'',
+        myinfo:'',
+        zhongjiangs:[],
         jiangpin_type_arry:{
             '1':'实体',
             '2':'虚拟',
@@ -39,7 +41,8 @@ Page({
         canyu_tips2: '',
         actionSheet_posy:0,
         actionSheet_opa:0,
-        bg_hidden_flag:true
+        bg_hidden_flag:true,
+        navbar_flag:'1'
     },
     
     onLoad:function(){
@@ -81,7 +84,12 @@ Page({
                     success(data) {
                         if (data.data.error_code == 0) {
                             console.log(data)
-                            var imgs = data.data.data.huodong.info.content_imgs.split(';');
+                            if (data.data.data.huodong.info.content_imgs){
+                                var imgs = data.data.data.huodong.info.content_imgs.split(';');
+                            }
+                            else{
+                                var imgs = [];
+                            }
                             if (!data.data.data.huodong.send_user.avatarurl){
                                 data.data.data.huodong.send_user.avatarurl = '../../images/my/default-headimg.png';
                             }
@@ -90,7 +98,8 @@ Page({
                                 info: data.data.data.huodong.info,
                                 jiangpins: data.data.data.huodong.jiangpins,
                                 send_user: data.data.data.huodong.send_user,
-                                content_imgs: imgs
+                                content_imgs: imgs,
+                                myinfo: data.data.data.my
                             })
                             if (data.data.data.huodong.info.share_img){
                                 _this.setData({
@@ -100,6 +109,17 @@ Page({
                             }
                             else{
                                 _this.thumbImage();
+                            }
+                            
+                            if (data.data.data.huodong.desc.state == '12'){
+                                for (var i = 0; i < data.data.data.huodong.jiangpins.length;i++){
+                                    _this.getOneZhongjiangInfo(data.data.data.huodong.jiangpins[i].huodong_jiangpin_id, data.data.data.huodong.desc.rand);
+                                }
+                            }
+                            else{
+                                _this.setData({
+                                    navbar_flag: '2'
+                                })
                             }
                         }
                     },
@@ -111,6 +131,38 @@ Page({
                 _this.getOneHuodongPeoples();
             }
         )
+    },
+    getOneZhongjiangInfo: function (jiangpin_id, rand){
+        var _this = this;
+        wx.request({
+            url: app.globalData.server_url + 'xcx/index/api_get_one_zhongjiang_info',
+            method: 'POST',
+            data: {
+                'huodong_id': app.globalData.huodong_id,
+                'page': 1,
+                'page_num': 9,
+                'openid': openid,
+                'sendtime': sendtime,
+                'pwrand': pwrand,
+                'pwstr': pwstr,
+                'jiangpin_id': jiangpin_id,
+                'rand': rand
+            },
+            success(data) {
+                if (data.data.error_code == 0) {
+                    var arry = _this.data.zhongjiangs;
+                    for (var i = 0; i < data.data.data.zhongjiangs.data.length;i++){
+                        if (!data.data.data.zhongjiangs.data[i].avatarurl){
+                            data.data.data.zhongjiangs.data[i].avatarurl = '../../images/my/default-headimg.png';
+                        }
+                    }
+                    arry.push(data.data.data.zhongjiangs.data);
+                    _this.setData({
+                        zhongjiangs: arry
+                    })
+                }
+            }
+        })
     },
     getOneHuodongPeoples: function () {
         var _this = this;
@@ -368,5 +420,19 @@ Page({
     },
     jumpToHuodongPepple:function(){
         wx.navigateTo({ url: '../huodong_people/huodong_people' });
+    },
+    changeNavbar:function(e){
+        var flag = e.target.dataset.flag;
+        this.setData({
+            navbar_flag: flag
+        })
+    },
+    tishi:function(e){
+        var text = e.target.dataset.text;
+        wx.showToast({
+            title: text,
+            icon: 'none',
+            duration: 2000
+        })
     }
 })

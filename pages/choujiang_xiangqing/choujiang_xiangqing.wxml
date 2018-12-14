@@ -32,41 +32,80 @@
             <text>{{send_user.nickname}}</text>
         </view>
     </view>
-    <view class='guanggao'>{{info.choujiang_shuoming}}</view>
-    <view class='mainbox'>
-        <view class='jianjie'>
-            <text>{{info.content}}</text>
-            <image wx:for="{{content_imgs}}" wx:key="index" src='{{img_domain+item}}' mode='widthFix'></image>
-        </view>
-        <view class='info' style='margin-top:40rpx;'>开奖条件：<text>{{desc.kaijiang_tiaojian}}</text></view>
-        <view class='info mycodes clear-both' wx:if='{{codes_info.codes.length > 0}}'>
-            <text style='color: #333;'>我的抽奖码：</text>
-            <text wx:for="{{codes_info.codes}}" wx:key="index" class='code-item'>{{item.code}}</text>
-        </view>
-        <view>
-            <view class='canyu-btn'>
-                <image src='../../images/my/circle.png'></image>
-                <!-- <text>参与抽奖</text> -->
-                <form report-submit bindsubmit="choujiang">
-                    <button form-type="submit">参与抽奖</button>
-                </form>
-            </view>
-            <view class='canyu-tips'><text>{{canyu_tips}}</text><text>{{canyu_tips2}}</text></view>
-        </view>
-        <view class='friends'>
-            <image wx:for="{{codes_info.invite_users}}" wx:key="index" src='{{item.avatarurl}}'></image>
-            <image wx:for="{{uninvite_users}}" wx:key="index" src='{{item}}'></image>
-        </view>
-        <view class='canyu-text'><text>已邀请好友 <text style='color:#f74a5e;'>{{codes_info.invite_users.length}}</text>/3</text></view>
-        <view class='canyu-info'>
-            <text>已有 {{desc.now_num}} 人参与</text>
-            <view class='lianjie' bindtap='jumpToHuodongPepple'>
-                <text>查看全部</text>
-                <!-- <image src='../../images/my/lianjie.png'></image>  -->
+    <view class='guanggao' wx:if="{{info.choujiang_shuoming}}">{{info.choujiang_shuoming}}</view>
+    <view wx:if="{{desc.state == '12'}}" class='navbar clear-both'>
+        <text class='{{navbar_flag=="1"?"active":""}}' data-flag='1' bindtap='changeNavbar'>开奖结果</text>
+        <text class='{{navbar_flag=="2"?"active":""}}' data-flag='2' bindtap='changeNavbar'>图文介绍</text>
+    </view>
+    <view wx:if="{{desc.state == '12' && navbar_flag=='1'}}">
+        <view class='my-huojiang'>
+            <view class='huojiang-text'>恭喜你，中奖啦！</view>
+            <!-- <view class='not-huojiang-text'>很遗憾，您未中奖</view> -->
+            <view class='wenan'><text>来而不可失者时也，蹈而不可失者机也</text></view>
+            <view class='my-huojiang-detail'>
+                <view style='padding:40rpx 0;font-size:28rpx;color:#333;'>我的奖品</view>
+                <view class='huojiang-block' wx:for="{{jiangpins}}" wx:key="index">
+                    <view class='price-name'>{{item.jiangpin_text}}</view>
+                    <view class='huojiang-users'>
+                        <view class='item' wx:for="{{zhongjiangs[index]}}" wx:key="code">
+                            
+                            <view class='code'><text>{{item.code}}</text></view>
+                        </view>
+                    </view>
+                </view>
             </view>
         </view>
-        <view class='canyu-users'>
-            <view wx:for="{{users}}" wx:key="user_id" class='headimg'><image src='{{item.avatarurl}}'></image></view>
+        <view class='huojiang-detail'>
+            <view style='padding:40rpx 0;font-size:28rpx;color:#333;'>获奖人员详情：</view>
+            <view class='huojiang-block' wx:for="{{jiangpins}}" wx:key="index">
+                <view class='price-name'>{{item.jiangpin_text}}</view>
+                <view class='huojiang-users'>
+                    <view class='item' wx:for="{{zhongjiangs[index]}}" wx:key="code">
+                        <image class='headimg' src='{{item.avatarurl}}'></image>
+                        <view class='nickname'>{{item.nickname}}</view>
+                        <view class='code'><text>{{item.code}}</text></view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view wx:elif="{{navbar_flag=='2'}}">
+        <view class='mainbox'>
+            <view class='jianjie' wx:if="{{info.content || content_imgs.length>0}}">
+                <text>{{info.content}}</text>
+                <image wx:for="{{content_imgs}}" wx:key="index" src='{{img_domain+item}}' mode='widthFix'></image>
+            </view>
+            <view class='info' style='margin-top:40rpx;'>开奖条件：<text>{{desc.kaijiang_tiaojian}}</text></view>
+            <view class='info mycodes clear-both' wx:if='{{codes_info.codes.length > 0}}'>
+                <text style='color: #333;'>我的抽奖码：</text>
+                <text wx:for="{{codes_info.codes}}" wx:key="index" class='code-item'>{{item.code}}</text>
+            </view>
+            <view>
+                <view class='canyu-btn'>
+                    <image src='../../images/my/circle.png'></image>
+                    <!-- <text>参与抽奖</text> -->
+                    <form wx:if="{{desc.state=='11' || desc.state=='14'}}" report-submit bindsubmit="choujiang">
+                        <button form-type="submit">参与抽奖</button>
+                    </form>
+                    <button wx:else data-text="该活动暂时不能抽奖" bindtap='tishi'>已结束</button>
+                </view>
+                <view class='canyu-tips'><text>{{canyu_tips}}</text><text>{{canyu_tips2}}</text></view>
+            </view>
+            <view class='friends'>
+                <image wx:for="{{codes_info.invite_users}}" wx:key="index" src='{{item.avatarurl}}'></image>
+                <image wx:for="{{uninvite_users}}" wx:key="index" src='{{item}}'></image>
+            </view>
+            <view class='canyu-text'><text>已邀请好友 <text style='color:#f74a5e;'>{{codes_info.invite_users.length}}</text>/3</text></view>
+            <view class='canyu-info'>
+                <text>已有 {{desc.now_num}} 人参与</text>
+                <view class='lianjie' bindtap='jumpToHuodongPepple'>
+                    <text>查看全部</text>
+                    <!-- <image src='../../images/my/lianjie.png'></image>  -->
+                </view>
+            </view>
+            <view class='canyu-users'>
+                <view wx:for="{{users}}" wx:key="user_id" class='headimg'><image src='{{item.avatarurl}}'></image></view>
+            </view>
         </view>
     </view>
     

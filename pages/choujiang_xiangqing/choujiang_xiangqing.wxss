@@ -92,8 +92,25 @@ canvas{
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.navbar{
+    background: #fff;
+    border-bottom: 1rpx solid #eee;
+}
+.navbar text{
+    float: left;
+    height: 100rpx;
+    width: 50%;
+    line-height: 100rpx;
+    text-align: center;
+    font-size: 30rpx;
+    color: #666;
+}
+.navbar .active{
+    font-weight: 600;
+    color: #333;
+}
 .guanggao{
-    margin-top: 20rpx;
+    margin: 20rpx 0;
     background: #fff;
     padding: 30rpx;
     font-size: 28rpx;
@@ -102,10 +119,60 @@ canvas{
     border-top: 1rpx solid #eee;
     border-bottom: 1rpx solid #eee;
 }
+.huojiang-detail{
+    padding: 0 20rpx;
+    background: #fff;
+}
+.huojiang-block{
+    border: 1rpx solid #f3f3f3;
+}
+.huojiang-block .price-name{
+    padding: 20rpx 0;
+    font-size: 28rpx;
+    text-align: center;
+    color: #333;
+    border-bottom: 1rpx solid #f3f3f3;
+}
+.huojiang-users{
+    padding: 20rpx;
+    overflow: hidden;
+}
+.huojiang-users .item{
+    float: left;
+    width: 33.3%;
+    margin: 20rpx 0;
+}
+.huojiang-users .item .headimg{
+    display: block;
+    width: 100rpx;
+    height: 100rpx;
+    margin: 0 auto;
+    border-radius: 50%;
+}
+.huojiang-users .item .nickname{
+    margin-top: 20rpx;
+    padding: 0 5rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 24rpx;
+    color: #666;
+    text-align: center;
+}
+.huojiang-users .item .code{
+    text-align: center;
+}
+.huojiang-users .item .code text{
+    padding: 4rpx 20rpx;
+    color: #fff;
+    background: #ef5055;
+    font-size: 24rpx;
+    border-radius: 24rpx;
+}
 .mainbox{
     padding: 20rpx;
     background: #fff;
-    margin: 20rpx 0;
+    margin-bottom: 20rpx;
 }
 .mainbox .info{
     font-size: 28rpx;

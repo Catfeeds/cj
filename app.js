@@ -126,7 +126,7 @@ App({
     globalData: {
         img_domain:'https://hdhfile.nbguohe.top/',
         qiniu:'',
-        huodong_id:'42',
+        huodong_id:'37',
         invite_user_openid:{},
         userInfo: null,
         userInfo_flag:true,
